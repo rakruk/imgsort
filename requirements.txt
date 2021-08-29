@@ -1,0 +1,11 @@
+numpy==1.19.5
+pandas==1.3.2
+scikit-learn==0.24.2
+matplotlib==3.4.3
+scipy==1.7.1
+seaborn==0.11.2
+tensorflow==2.6.0
+keras==2.6.0
+tensorflow-datasets==4.4.0
+efficientnet-lite-keras @ git+https://github.com/sebastian-sz/efficientnet-lite-keras@a15c6a6adeafb2c2ee1301ce293c7cbdc2ab3e59
+tqdm
