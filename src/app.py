@@ -17,7 +17,7 @@ def main():
     parser_sort = subparsers.add_parser('sort')
     parser_sort.add_argument('unsorted_folder', type=pathlib.Path, help='Path to folder all unsorted images')
     parser_sort.add_argument('model', type=pathlib.Path, help='Path to read the model data')
-    parser_sort.add_argument('-t', type=int, default=0, required=False, help='If all category prediction is lower than this threshold, do not move image (Default: 0)')
+    parser_sort.add_argument('-t', type=float, default=0, required=False, help='If all category prediction is lower than this threshold, do not move image (Default: 0)')
     parser_sort.add_argument('-y', action='store_true', required=False, help='Overwrite files with same name already present in subfolders')
 
     args = parser.parse_args()

@@ -44,7 +44,7 @@ C:\Documents\Pictures\My Sorted Pictures
 Train the model:
 
 ```bash
-imgsort train "C:\Documents\Pictures\My Sorted Pictures" "C:\Documents\my_model"
+imgsort train "C:\Documents\Pictures\My Sorted Pictures" "C:\Documents\Imgsort Model" -n 3
 ```
 
 Before sorting:
@@ -65,7 +65,7 @@ C:\Documents\Downloads
 Sort images in a folder 
 
 ```bash
-imgsort sort "C:\Documents\Downloads" "C:\Documents\my_model"
+imgsort sort "C:\Documents\Downloads" "C:\Documents\Imgsort Model"
 ```
 
 After sorting:
@@ -89,13 +89,12 @@ C:\Documents\Downloads
 
 #### Training options
 
-- `-e [integer]` or `--epochs [integer]` the number of training epochs to perform, value should ideally sit between 2 and 10
-- `-y` overwrites the output model if it has the same name and same path
+- `-e [integer]` or `--epochs [integer]` the number of training epochs to perform, value should ideally sit between 2 and 6
+- `-n` (required) number of categories (subfolders)
 
 #### Sorting options
 
 - `-t [integer]` or `--threshold [integer]` only moves images only if a category is greater than threshold
-- `-y` overwrites images in destination subfolders where images have the same name
 
 ### Known Issues
 - Doesn't use the batch feature from TensorFlow for sorting, doesn't multithread sorting.
