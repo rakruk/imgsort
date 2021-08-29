@@ -3,13 +3,7 @@ from efficientnet_lite import EfficientNetLiteB4
 import os
 import pickle
 
-BATCH_SIZE = 32
-TARGET_SIZE = (300, 300)
-
-
-def preprocess_data(images, labels):
-    images = (images - 127.00) / 128.00
-    return images, labels
+from image_ops import preprocess_data, BATCH_SIZE, TARGET_SIZE
 
 
 def augment_data(images, labels):
@@ -45,7 +39,7 @@ def create_datasets(path):
     return train_dataset, val_dataset
 
 
-def build_model(num_classes=3):
+def build_model(num_classes):
     base_model = EfficientNetLiteB4(
         input_shape=(TARGET_SIZE[0], TARGET_SIZE[1], 3),
         include_top=False,
@@ -87,10 +81,5 @@ def main_train(input_path, num_classes, model_output_path, epochs=5):
 
     model.save(model_output_path)
     
-
     labels = [i for i in os.listdir(input_path) if not os.path.isfile( os.path.join(input_path, i))]
-    print(labels)
     pickle.dump(labels, open( os.path.join(model_output_path,'labels.pkl'), 'wb'))
-    
-
-#main_train("./yes", 3, "./die/my_new_model", 1)

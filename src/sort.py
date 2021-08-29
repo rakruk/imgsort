@@ -6,19 +6,7 @@ from tqdm import tqdm
 import numpy as np
 import tensorflow as tf
 
-print(tf.__version__)
-
-BATCH_SIZE = 64
-TARGET_SIZE = (300, 300)
-
-def preprocess_data(images, labels):
-    images = (images - 127.00) / 128.00  # [0;255] -> [0;1]
-    return images, labels
-
-
-def preprocess_data_nolabels(images):
-    images = (images - 127.00) / 128.00  # [0;255] -> [0;1]
-    return images
+from image_ops import preprocess_data, TARGET_SIZE
 
 
 def predict_data(imgpath, model):
@@ -43,15 +31,13 @@ def predict_data(imgpath, model):
 
 def predict_images(folder, model, threshold):
     # Get all images paths in the mypath directory
-    img_files = [i for i in os.listdir(folder) if os.path.isfile( os.path.join(folder, i)) and re.search("\.(jpg|png|gif)$", i)]
+    img_files = [i for i in os.listdir(folder) if os.path.isfile( os.path.join(folder, i)) and re.search("\.(jpg|png|gif)$", i)][:3000]
     random.shuffle(img_files)
     img_pred_path = []
-    for i in tqdm(range(len(img_files))): #len(allofem) < 10 and 
-        print("{:.2%}".format(i/len(img_files)))
+    for i in tqdm(range(len(img_files)), smoothing=0.1): #len(allofem) < 10 and 
         image, pred = predict_data( os.path.join(folder, img_files[i]), model)
         # FIXME: treshold validation is currently in wrong method, move it to move_images
         if pred.max()>threshold: 
-            print(len(img_pred_path))
             img_pred_path.append((None, pred, img_files[i]))
     print("==== images predicted ====")
     return img_pred_path
