@@ -31,7 +31,7 @@ def predict_data(imgpath, model):
 
 def predict_images(folder, model, threshold):
     # Get all images paths in the mypath directory
-    img_files = [i for i in os.listdir(folder) if os.path.isfile( os.path.join(folder, i)) and re.search("\.(jpg|png|gif)$", i)][:3000]
+    img_files = [i for i in os.listdir(folder) if os.path.isfile( os.path.join(folder, i)) and re.search("\.(jpg|png|gif)$", i)]
     random.shuffle(img_files)
     img_pred_path = []
     for i in tqdm(range(len(img_files)), smoothing=0.1): #len(allofem) < 10 and 
