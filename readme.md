@@ -13,9 +13,11 @@
 ```bash
 $ git clone <this repo>
 $ cd imgsort
-$ python3 -m venv . # Create a virtual environnement, highy recommended unless you want 1.5gb of libraries in your global environment.
-$ ./Scripts/Activate.ps1 # Or activate.sh on bash/linux environements.
-(imgsort) $ python3 -m pip install -r requirements
+# Create a virtual environnement,
+# highy recommended unless you want 1.5gb of libraries in your global environment
+$ python3 -m venv ./venv/  
+$ ./venv/Scripts/Activate.ps1 # Or activate.sh on bash/linux environements.
+(imgsort) $ python3 -m pip install -r requirements.txt
 (imgsort) $ python3 ./src/app.py -h
 ```
 
@@ -41,7 +43,7 @@ C:\Documents\Pictures\My Sorted Pictures
         ...
 ```
 
-Train the model, `n` should be your number of subfolders or classes:
+Train the model, `n` should be your number of subfolders or classes. You should at least have 200 images per subfolder for the model to train correctly. Avoid categories that are very simmilar, especially categories that overlap.
 
 ```bash
 imgsort train "C:\Documents\Pictures\My Sorted Pictures" "C:\Documents\Imgsort Model" -n 3
