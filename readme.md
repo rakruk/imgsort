@@ -5,7 +5,7 @@
 
 ### About
 
-- Uses state of the art [EfficientNet-Lite](https://blog.tensorflow.org/2020/03/higher-accuracy-on-vision-models-with-efficientnet-lite.html), released in March 2020. It is a smaller, newer version of EfficientNet made to run on lower end hardware while still outperforming Inception V4 (using the B4 model size).
+- Uses [EfficientNet-Lite](https://blog.tensorflow.org/2020/03/higher-accuracy-on-vision-models-with-efficientnet-lite.html), released in March 2020. It is a smaller, newer version of EfficientNet made to run on lower end hardware while still outperforming Inception V4 (using the B4 model size).
 - Fun little project made in about 3 days
 
 ### Installation
@@ -41,13 +41,13 @@ C:\Documents\Pictures\My Sorted Pictures
         ...
 ```
 
-Train the model:
+Train the model, `n` should be your number of subfolders or classes:
 
 ```bash
 imgsort train "C:\Documents\Pictures\My Sorted Pictures" "C:\Documents\Imgsort Model" -n 3
 ```
 
-Before sorting:
+Before sorting, _make sure subfolders are present, imgsorter will not create them_:
 
 ```
 C:\Documents\Downloads
